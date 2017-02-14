@@ -30,17 +30,19 @@
 <script>
     $(document).ready(function() {
         $("#loginBtn").click(function() {
-            var userData = $("#username").val(); + $("#password").val();
-            var jsonData = $.parseJSON(userData);
+            var data = {};
+            data.username = $("#username").val();
+            data.password = $("#password").val();
+            var jsonData = JSON.stringify(data);
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8080/login",
+                data: jsonData,
+                error: function() {
+                    alert("Failure Posting to Server");
+                },
+                dataType: "json"
+            });
         });
-    });
-    $.ajax({
-        type: "POST",
-        url: "memez",
-        data: jsonData,
-        error: function() {
-            alert("Failure Posting to Server");
-        }
-        dataType: "json"
     });
 </script>
