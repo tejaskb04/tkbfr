@@ -8,7 +8,6 @@ app.get("/login", function(req, res) {
     res.sendFile("C:/tejas/src/tkbfr/src/web/login.html");
 });
 app.post("/login", function(req, res) {
-    console.log("dfksfjljsdklfjsdfjsklfjsjkj"); 
     console.log(req.body);
     /* Compare data with database */
 });
