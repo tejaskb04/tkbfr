@@ -1,0 +1,66 @@
+extends layout
+block content
+    <style>
+            #user {
+                text-align: left;
+            }
+            #pass {
+                text-align: left;
+            }
+            #confirm {
+                text-align: left;
+            }
+            #userText {
+                position: fixed;
+                left: 80px;
+                top: 16px;
+            }
+            #passText {
+                position: fixed;
+                left: 80px;
+                top: 50px;
+            }
+            #confirmPassText {
+                position: fixed;
+                left: 136px;
+                top: 84px;
+            }
+            #register {
+                position: fixed;
+                left: 80px;
+                top: 130px;
+            }
+        </style>
+        <h1>#{title}</h1>
+        <p id = "user">Username:</p>
+        <p id = "pass">Password:</p>
+        <p id = "confirm">Confirm Password:</p>
+        <textarea id = "userText" rows = "1" cols = "20"></textarea>
+        <textarea id ="passText" rows = "1" cols = "20"></textarea>
+        <textarea id = "confirmPassText" rows = "1" cols = "20"></textarea>
+        <button id = "register" onclick = "registerFunction()">Register Now!</button>  
+        
+        <script>
+            function registerFunction() {
+                var userTxt = document.getElementById("userText").value;
+                var passTxt = document.getElementById("passText").value;
+                var confirmPassTxt = document.getElementById("confirmPassText").value;
+                var passBool = false;
+                var userBool = false;
+                var passLengthBool = false;
+                
+                if (passTxt == confirmPassTxt) {
+                    passBool = true;
+                }
+                if (userTxt.length != 0) {
+                    userBool = true;
+                }
+                if (passTxt.length != 0) {
+                    passLengthBool = true;
+                }
+                if (passBool && userTxt && passLengthBool) {
+                    // stub
+                }
+                //alert(passBool);
+            }
+        </script>
