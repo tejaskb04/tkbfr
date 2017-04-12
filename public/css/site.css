@@ -1,33 +1,20 @@
-#wrapper {
-    margin: 0 auto;
-    width: 100%;
+body {
+	padding-bottom: 20px;
+	padding-top: 50px;
+}
+
+#nwrap {
+    background-color: #efefef;
+    padding: 5px;
+}
+
+#cwrap {
+    padding:5px;
 }
 
 .container {
-    width: 400px;
+    width: 100%;
 }
-
 .form-control {
     width: 250px;
-}
-
-.navbar-fixed-left {
-    width: 140px;
-    position: fixed;
-    border-radius: 0;
-    height: 100%;
-    }
-
-.navbar-fixed-left .navbar-nav > li {
-    float: none;
-    width: 139px;
-}
-
-.navbar-fixed-left + .container {
-    padding-left: 160px;
-}
-
-.navbar-fixed-left .navbar-nav > li > .dropdown-menu {
-    margin-top: -50px;
-    margin-left: 140px;
 }

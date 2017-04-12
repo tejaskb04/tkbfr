@@ -2,9 +2,23 @@ doctype html
 html(lang=en)
 	include ./includes/head.pug
 	body
-		include ./includes/header-nav.pug
-		<div id="wrapper">
-			block content
+		<div class="container">
+			<div class="row">
+				<div class="col" id="hwrap">
+					include ./includes/header-nav.pug
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2" id="nwrap">
+					<span>This is the left panel</span>
+				</div>
+				<div class="col-xs-10" id="cwrap">
+					block content
+				</div>
+			</div>
+			<div class="row">
+				<div class="col" id="fwrap">
+					include ./includes/footer.pug
+				</div>
+			</div>
 		</div>
-		include ./includes/footer.pug
-
