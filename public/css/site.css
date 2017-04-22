@@ -3,13 +3,13 @@ body {
 	padding-top: 50px;
 }
 
-#nwrap {
+#nav-wrap {
     background-color: #efefef;
     padding: 5px;
     height: 564px;
 }
 
-#cwrap {
+#content-wrap {
     padding:5px;
 }
 
