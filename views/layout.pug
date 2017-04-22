@@ -2,13 +2,13 @@ doctype html
 html(lang=en)
 	include ./includes/head.pug
 	body
-		<div class="container">
-			<div class="row">
-				<div class="col" id="header-wrap">
-					include ./includes/header-nav.pug
+		<div class="container" id="body-wrap">
+			<div class="row" id="header-wrap">
+				<div class="col">
+					include ./includes/header.pug
 				</div>
 			</div>
-			<div class="row">
+			<div class="row" id="middle-wrap">
 				<div class="col-xs-2" id="nav-wrap">
 					<span>This is the left panel</span>
 				</div>
@@ -16,8 +16,8 @@ html(lang=en)
 					block content
 				</div>
 			</div>
-			<div class="row">
-				<div class="col" id="footer-wrap">
+			<div class="row" id="footer-wrap">
+				<div class="col">
 					include ./includes/footer.pug
 				</div>
 			</div>
