@@ -5,31 +5,25 @@ html {
 }
 
 body {
-    height: 100%;
 	padding-bottom: 20px;
 	padding-top: 50px;
 }
 
-#body-wrap, #middle-wrap, #nav-wrap, #content-wrap {
-    height: 100%;
+#nav-wrap, #content-wrap, #footer-wrap {
+    padding: 5px;
+}
+
+#body-wrap {
+    width:100%;
+}
+
+#content-wrap {
+    border-left: 1px solid #efefef;
 }
 
 #footer-wrap {
     background-color: #f2f2f2;
 }
-#body-wrap {
-    width: 100%;
-}
-
-#nav-wrap {
-    background-color: #efefef;
-    padding: 5px;
-}
-
-#content-wrap {
-    padding: 5px;
-}
-
 .form-control {
     width: 250px;
 }
