@@ -1,5 +1,6 @@
 // load express and other modules
 var express = require("express");
+var nunjucks  = require("nunjucks");
 var path = require("path");
 var favicon = require("serve-favicon");
 var logger = require("morgan");
@@ -9,9 +10,14 @@ var bodyParser = require("body-parser");
 // set express to app
 var app = express();
 
-// view engine setup
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "pug");
+// set Nunjucks as rendering engine for pages with .html suffix
+var PATH_TO_TEMPLATES = "./views";
+nunjucks.configure( PATH_TO_TEMPLATES, {
+    autoescape: true,
+    express: app
+}) ;
+app.engine("html", nunjucks.render) ;
+app.set("view engine", "html") ;
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
