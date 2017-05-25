@@ -1,5 +1,14 @@
 {% extends "_layout.html" %}
 {% block body %}
 <h1>This is the index</h1>
+
+<div id="feed-content"></div>
+
+<script>
+$( document ).ready(function() {
+    var url = "https://www.theatlantic.com/feed/best-of/";
+    loadFeed(url, "feed-content");
+});
+</script>
 {% endblock %}
 

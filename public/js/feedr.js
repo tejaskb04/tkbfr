@@ -1,14 +1,15 @@
-$( document ).ready(function() {
-    var url = "https://www.theatlantic.com/feed/best-of/";
-    loadFeed(url);
-});
-
-function loadFeed(url) {
+function loadFeed(url, target) {
     alert("load feed called");
-    var request = $.get(url);
+    //var request = $.get(url);
+    var request = $.ajax({
+        type: "GET",
+        url: url,
+        crossDomain: true,
+        dataType: "jsonp"
+    });
 
     request.done(function (data) {
-        $("#feed-content").html(data);
+        $("#" + target).html(data);
         alert("success");
     });
 
