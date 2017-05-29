@@ -10,9 +10,13 @@ var bodyParser = require("body-parser");
 // set express to app
 var app = express();
 
+// check node_env, if not set default to development
+var env = (process.env.NODE_ENV || "development");
+// load config
+var config = require("./config/config")[env];
+
 // set Nunjucks as rendering engine for pages with .html suffix
-var PATH_TO_TEMPLATES = "./views";
-nunjucks.configure( PATH_TO_TEMPLATES, {
+nunjucks.configure("./views", {
     autoescape: true,
     express: app
 }) ;
@@ -21,19 +25,25 @@ app.set("view engine", "html") ;
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
-app.use(logger("dev"));
+app.use(logger("dev")); // "dev" format of logger prints color coded strings to console
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use("/static", express.static(__dirname + "public"));
 
-// routing - load router modules from routes directory, then mount them on to a path
-var loginPage = require("./routes/login");
-app.use(loginPage);
-var registerPage = require("./routes/register");
-app.use(registerPage);
-var homePage = require("./routes/index");
-app.use(homePage);
+module.exports.router = express.Router();
+
+// map route definitions to controller methods
+// NOTE: this must be setup before app.listen happens!
+// first, import the route definitions from each route.js file
+var homeRoutes = require("./routes/homeRoutes.js");
+var accountRoutes = require("./routes/accountRoutes.js");
+var feedRoutes = require("./routes/feedRoutes.js");
+// then, connect the imported routes to the URLs
+app.use("/", homeRoutes);
+app.use("/account", accountRoutes);
+app.use("/feed", feedRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -43,10 +53,8 @@ app.use(function(req, res, next) {
 });
 
 // error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get("env") === "development") {
+if (app.settings.env === "development") {
+  // development error handler, will print stacktrace
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render("error", {
@@ -55,16 +63,18 @@ if (app.get("env") === "development") {
     });
   });
 }
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render("error", {
-    message: err.message,
-    error: {}
+else {
+// production error handler, no stacktraces leaked to user
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render("error", {
+      message: err.message,
+      error: {}
+    });
   });
-});
+}
 
-app.listen(8080);
-console.log("Running on port 8080");
+// start the server
+app.listen(config.EnvConfig.port, function(){
+  console.log("Express server listening on port %d in %s mode", config.EnvConfig.port, app.settings.env);
+});

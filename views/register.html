@@ -1,5 +1,5 @@
-extends layout
-block content
+{% extends "_layout.html" %}
+{% block body %}
 	<div class="container">
 		<h3 class="form-signin-heading">Register</h3>
 		<form action="" method="post" name="register-form" class="form-signin">
@@ -9,3 +9,4 @@ block content
 			<button class="btn btn-primary"  name="Submit" value="register" type="Submit">Register</button>
 		</form>
 	</div>
+{% endblock %}

@@ -4,13 +4,12 @@ function loadFeed(url, target) {
     var request = $.ajax({
         type: "GET",
         url: url,
-        crossDomain: true,
-        dataType: "jsonp"
+        crossDomain: true
+        //dataType: "jsonp"
     });
 
     request.done(function (data) {
-        $("#" + target).html(data);
-        alert("success");
+        alert(data);
     });
 
     request.fail(function(jqXHR, textStatus, errorThrown) {
