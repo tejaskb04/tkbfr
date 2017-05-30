@@ -1,9 +1,9 @@
 // account controller methods
 
 exports.login = function(req, res, next) {
-  res.render("login", { title: "Login Page" });
+  res.render("./account/login", { title: "Login Page" });
 };
 
 exports.register = function(req, res, next) {
-  res.render("register", { title: "Register Page" });
+  res.render("./account/register", { title: "Register Page" });
 };
