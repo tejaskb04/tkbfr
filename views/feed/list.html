@@ -7,6 +7,8 @@
     - each item will have a title and a URL
     - list each item using <a src=url>title</a>
 -->
-
-<p>This is list</p>
+    <h2>{{ viewModel.title }}</h2>
+    {% for item in viewModel.items %}
+    <a href="{{ item.url }}">{{ item.title }}</a><br/>
+    {% endfor %}
 {% endblock %}
