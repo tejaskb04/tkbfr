@@ -3,6 +3,9 @@ var express = require("express");
 var app = express;
 
 exports.read = function(req, res, next) {
+  //TODO: read the variable that comes as part of url after the /read
+  // pass the value of that variable to the read.html
+  // display that value inside read.html
   res.render("./feed/read", { title: "Read Page" });
 };
 
