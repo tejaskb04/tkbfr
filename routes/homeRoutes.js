@@ -1,6 +1,5 @@
 // define routes for home controller methods
 
-//var express = require("express");
 var router = module.parent.exports.router;
 
 // require the controllers

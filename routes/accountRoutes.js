@@ -1,7 +1,5 @@
 // define routes for account controller methods
 
-// var express = require("express");
-// var router = express.Router();
 var router = module.parent.exports.router;
 
 // require the controllers
