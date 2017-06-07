@@ -7,6 +7,8 @@ var feedController = require("../controllers/feedController");
 
 router.get("/read", feedController.read);
 
+router.get("/read/:url", feedController.read);
+
 router.get("/list", feedController.list);
 
 module.exports = router;
