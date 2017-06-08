@@ -10,15 +10,8 @@ body {
 }
 
 #headerContent {
-    padding: 10px;
-    position: relative;
-    width: 100%;
-    color:white;
-    background-color:black;
-    /*clear: left;*/
-    text-align: center;
+    background-color: black;
 }
-
 /*#nav-wrap, #content-wrap, #footer-wrap {
     padding: 5px;
 }
