@@ -6,27 +6,4 @@ html {
 
 body {
 	padding-bottom: 20px;
-	padding-top: 50px;
 }
-
-#headerContent {
-    background-color: black;
-}
-/*#nav-wrap, #content-wrap, #footer-wrap {
-    padding: 5px;
-}
-
-#body-wrap {
-    width:100%;
-}
-
-#content-wrap {
-    border-left: 1px solid #efefef;
-}
-
-#footer-wrap {
-    background-color: #f2f2f2;
-}
-.form-control {
-    width: 250px;
-}*/

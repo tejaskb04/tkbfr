@@ -9,19 +9,23 @@
 	<link rel="stylesheet" href="/static/css/site.css" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" crossorigin="anonymous"></script>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<script src="/static/js/yrss.min.js" crossorigin="anonymous"></script>
-	<script src="/static/js/feedr.js" crossorigin="anonymous"></script>
 	<script src="/static/js/site.js" crossorigin="anonymous"></script>
 </head>
 <body>
 	<div class="container body-content">
 		<div class="row">
-			<div class="col-xs-12 header-content" id = "headerContent">
-				<ul class="nav nav-pills">
-  					<li role="presentation" class="active"><a href="#">Home</a></li>
-  					<li role="presentation"><a href="#">Box1</a></li>
-  					<li role="presentation"><a href="#">Box2</a></li>
-				</ul>
+			<div class="col-xs-12 header-content" id="headerContent">
+				<nav class="navbar navbar-default">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<a class="navbar-brand" href="/">Feed Reader</a>
+						</div>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="/account/register"><span class="glyphicon glyphicon-user"></span>Register</a></li>
+							<li><a href="/account/login"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+						</ul>
+					</div>
+				</nav>
 			</div>
 		</div>
 		<div class="row">
