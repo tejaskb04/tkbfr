@@ -1,16 +1,16 @@
 {% extends "_layout.html" %}
 {% block body %}
 
-<div id="feed-content" style = "height: 500px; background-color: gray">
-    <p style = "text-align: center">this is feed</p>
+<div class="fluid-container">
+    <div class="row">
+        <div class="col-xs-3" id="left-nav-col">
+            this is left col list of feeds
+        </div>
+        <div class="col-xs-9" id="feed-col">
+            this is right col feed display
+        </div>
+    </div>
 </div>
 
-<script>
-$( document ).ready(function() {
-    //var url = "https://www.theatlantic.com/feed/channel/technology/";
-    var url = "http://www.theonion.com/feeds/rss";
-    loadFeed(url, "feed-content");
-});
-</script>
 {% endblock %}
 

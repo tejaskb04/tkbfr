@@ -12,3 +12,12 @@ body {
     padding-left: 10px;
 }
 
+#content-row {
+    min-height: 500px;
+    padding-left: 10px;
+}
+
+#left-nav-col {
+    border-right: 1px solid #dddddd;
+     min-height: 500px;
+}
