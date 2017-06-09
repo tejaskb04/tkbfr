@@ -5,6 +5,16 @@
     <div class="row">
         <div class="col-xs-3" id="left-nav-col">
             this is left col list of feeds
+            <a id = "a" href = "/" onclick="onClick()">http://feeds.bbci.co.uk/news/rss.xml</a>
+            <a href = "/">http://news.sky.com/feeds/rss/home.xml</a>
+            <a href = "/">http://www.techmeme.com/feed.xml</a>
+            <script>
+                $(document).ready(function() {
+                    $("#a").click(function() {
+                        alert("clicked");          
+                    });
+                });
+            </script>
         </div>
         <div class="col-xs-9" id="feed-col">
             this is right col feed display
