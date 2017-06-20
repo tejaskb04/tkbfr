@@ -8,9 +8,9 @@ exports.read = function(req, res, next) {
   // pass the value of that variable to the read.html
   // display that value inside read.html
   var params = req.params;
-  var url = params.url;
-  res.render("./feed/read", { title: "Read Page", url: url});
-  
+  var feedurl = params.feedurl;
+  console.log("url: %s", feedurl);
+  res.render("./feed/read", { title: "Read Page", url: feedurl});
 };
 
 exports.list = function(req, res, next) {

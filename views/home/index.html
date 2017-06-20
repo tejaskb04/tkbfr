@@ -5,17 +5,21 @@
     <div class="row">
         <div class="col-xs-3" id="left-nav-col">
             this is left col list of feeds
-            <a id = "a" href = "/" onclick="onClick()">http://feeds.bbci.co.uk/news/rss.xml</a>
-            <a href = "/">http://news.sky.com/feeds/rss/home.xml</a>
-            <a href = "/">http://www.techmeme.com/feed.xml</a>
+            <a class="flink" href="#" data-href="http://feeds.bbci.co.uk/news/rss.xml">http://feeds.bbci.co.uk/news/rss.xml</a>
+            <a class="flink" href="#" data-href="http://news.sky.com/feeds/rss/home.xml">http://news.sky.com/feeds/rss/home.xml</a>
+            <a class="flink" href="#" data-href="http://www.techmeme.com/feed.xml">http://www.techmeme.com/feed.xml</a>
             <script>
                 $(document).ready(function() {
-                    $("#a").click(function() {
-                        var value = $("#a").attr("href");
+                    $(".flink").bind("click", function() {
+                        var furl = $(this).attr("data-href");
                         alert("clicked");
+                        alert(furl);
                         $.ajax({
-                            url: "/feed/read/" + value,
-                            dataType: JSON
+                            url: "/feed/read/" + furl,
+                            dataType: JSON,
+                            success: function(data, textStatus, jqxhr) {
+                                alert(data);
+                            }
                         });       
                     });
                 });
