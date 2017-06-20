@@ -1,5 +1,6 @@
 // define routes for feed controller methods
 var express = require("express");
+var feed = require("feed-read");
 var app = express;
 
 exports.read = function(req, res, next) {
@@ -9,6 +10,7 @@ exports.read = function(req, res, next) {
   var params = req.params;
   var url = params.url;
   res.render("./feed/read", { title: "Read Page", url: url});
+  
 };
 
 exports.list = function(req, res, next) {

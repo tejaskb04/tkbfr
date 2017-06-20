@@ -11,7 +11,12 @@
             <script>
                 $(document).ready(function() {
                     $("#a").click(function() {
-                        alert("clicked");          
+                        var value = $("#a").attr("href");
+                        alert("clicked");
+                        $.ajax({
+                            url: "/feed/read/" + value,
+                            dataType: JSON
+                        });       
                     });
                 });
             </script>
