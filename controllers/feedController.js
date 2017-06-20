@@ -1,7 +1,8 @@
 // define routes for feed controller methods
 var express = require("express");
+var http = require("http");
 var feed = require("feed-read");
-var app = express;
+var app;
 
 exports.read = function(req, res, next) {
   //TODO: read the variable that comes as part of url after the /read
@@ -10,6 +11,26 @@ exports.read = function(req, res, next) {
   var params = req.params;
   var feedurl = params.feedurl;
   console.log("url: %s", feedurl);
+  //*******************************************************************/
+  app = http.createServer(function(req, res) {
+      res.writeHead(200, {
+          "Content-Type": "text/html",
+          "Transfer-Encoding": "chunked"
+      });
+      res.send(JSON.stringify("<html>\n<head>\n<title>RSS Feeds</title>\n</head>\n<body>"));
+      //for (var j = 0; j < urls.length; j++) {
+          feed(feedurl, function(err, articles) {
+              for (var i = 0; i < articles.length; i++) {
+                  res.send(JSON.stringify(articles[i].title)); 
+                  if( i === articles.length-1) {
+                      res.send(JSON.stringify("</body>\n</html>")); 
+				          }
+              } 
+          }); 
+        //} 
+    });
+    app.listen(3000)
+    //*****************************************************************/
   res.render("./feed/read", { title: "Read Page", url: feedurl});
 };
 

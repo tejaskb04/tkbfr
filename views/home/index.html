@@ -12,12 +12,14 @@
                 $(document).ready(function() {
                     $(".flink").bind("click", function() {
                         var furl = $(this).attr("data-href");
+                        //furl.toLowerCase();
                         alert("clicked");
                         alert(furl);
                         $.ajax({
                             url: "/feed/read/" + furl,
                             dataType: JSON,
                             success: function(data, textStatus, jqxhr) {
+                                alert("hi");
                                 alert(data);
                             }
                         });       
