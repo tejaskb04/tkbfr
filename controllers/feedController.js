@@ -4,38 +4,25 @@ var http = require("http");
 var feed = require("feed-read");
 var app;
 
-exports.read = function(req, res, next) {
-  //TODO: read the variable that comes as part of url after the /read
-  // pass the value of that variable to the read.html
-  // display that value inside read.html
-  var params = req.params;
-  var feedurl = params.feedurl;
-  console.log("url: %s", feedurl);
-  //*******************************************************************/
-  app = http.createServer(function(req, res) {
-      res.writeHead(200, {
-          "Content-Type": "text/html",
-          "Transfer-Encoding": "chunked"
-      });
-      res.send(JSON.stringify("<html>\n<head>\n<title>RSS Feeds</title>\n</head>\n<body>"));
-      //for (var j = 0; j < urls.length; j++) {
-          feed(feedurl, function(err, articles) {
-              for (var i = 0; i < articles.length; i++) {
-                  res.send(JSON.stringify(articles[i].title)); 
-                  if( i === articles.length-1) {
-                      res.send(JSON.stringify("</body>\n</html>")); 
-				          }
-              } 
-          }); 
-        //} 
-    });
-    app.listen(3000)
-    //*****************************************************************/
-  res.render("./feed/read", { title: "Read Page", url: feedurl});
+exports.read = function (req, res, next) {
+	// read the variable that comes as part of url, "./feed/read/<url>"
+	var params = req.params;
+	var feedurl = params.feedurl;
+	console.log("feed url: %s", feedurl);
+
+	// pass that <url> to feed-read module
+	feed(feedurl, function (err, articles) {
+		if (err) throw err;
+		else {
+			// get the result of feed-read module as JSON
+			// send that JSON back to the caller (which is the jquery get function)
+			// do not use res.render, because there is no HTML to be rendered, only JSON to send back
+			res.send(articles);
+		}
+	});
 };
 
-exports.list = function(req, res, next) {
-
+exports.list = function (req, res, next) {
     /* TODO
     - create an object called feedsViewModel
     - create a list of items in this object
@@ -45,14 +32,13 @@ exports.list = function(req, res, next) {
     - pass in this view model object as the parameter to the list page
     */
 
-    var items = [];
-    items.push({title: "BBC Feed", url: "http://feeds.bbci.co.uk/news/rss.xml"});
-    items.push({title: "Sky Feed", url: "http://news.sky.com/feeds/rss/home.xml"});
-    items.push({title: "Techmeme Feed", url: "http://www.techmeme.com/feed.xml"});
-    
-    var viewModel = {};
-    viewModel.title = "List of Feeds";
-    viewModel.items = items;
-    res.render("./feed/list", {viewModel: viewModel});
-};
+	var items = [];
+	items.push({ title: "BBC Feed", url: "http://feeds.bbci.co.uk/news/rss.xml" });
+	items.push({ title: "Sky Feed", url: "http://news.sky.com/feeds/rss/home.xml" });
+	items.push({ title: "Techmeme Feed", url: "http://www.techmeme.com/feed.xml" });
 
+	var viewModel = {};
+	viewModel.title = "List of Feeds";
+	viewModel.items = items;
+	res.render("./feed/list", { viewModel: viewModel });
+};

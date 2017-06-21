@@ -1,6 +1,6 @@
 // load express and other modules
 var express = require("express");
-var nunjucks  = require("nunjucks");
+var nunjucks = require("nunjucks");
 var path = require("path");
 var favicon = require("serve-favicon");
 var logger = require("morgan");
@@ -17,11 +17,11 @@ var config = require("./config/config")[env];
 
 // set Nunjucks as rendering engine for pages with .html suffix
 nunjucks.configure("./views", {
-    autoescape: true,
-    express: app
-}) ;
-app.engine("html", nunjucks.render) ;
-app.set("view engine", "html") ;
+	autoescape: true,
+	express: app
+});
+app.engine("html", nunjucks.render);
+app.set("view engine", "html");
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
@@ -46,35 +46,35 @@ app.use("/account", accountRoutes);
 app.use("/feed", feedRoutes);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error("Not Found");
-  err.status = 404;
-  next(err);
+app.use(function (req, res, next) {
+	var err = new Error("Not Found");
+	err.status = 404;
+	next(err);
 });
 
 // error handlers
 if (app.settings.env === "development") {
-  // development error handler, will print stacktrace
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render("error", {
-      message: err.message,
-      error: err
-    });
-  });
+	// development error handler, will print stacktrace
+	app.use(function (err, req, res, next) {
+		res.status(err.status || 500);
+		res.render("error", {
+			message: err.message,
+			error: err
+		});
+	});
 }
 else {
-// production error handler, no stacktraces leaked to user
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render("error", {
-      message: err.message,
-      error: {}
-    });
-  });
+	// production error handler, no stacktraces leaked to user
+	app.use(function (err, req, res, next) {
+		res.status(err.status || 500);
+		res.render("error", {
+			message: err.message,
+			error: {}
+		});
+	});
 }
 
 // start the server
-app.listen(config.EnvConfig.port, function(){
-  console.log("Express server listening on port %d in %s mode", config.EnvConfig.port, app.settings.env);
+app.listen(config.EnvConfig.port, function () {
+	console.log("Express server listening on port %d in %s mode", config.EnvConfig.port, app.settings.env);
 });
