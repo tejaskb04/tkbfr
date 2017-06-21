@@ -1,23 +1,29 @@
 {
-  "name": "feed-reader",
-  "version": "0.0.1",
-  "description": "rss/atom feed reader",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tejaskb04/tkbfr.git"
-  },
-  "author": "tejaskb",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/tejaskb04/tkbfr/issues"
-  },
-  "homepage": "https://github.com/tejaskb04/tkbfr",
-  "dependencies": {
-    "express": "^4.15.3",
-    "nunjucks":"^3.0.1"
-  }
+	"name": "feed-reader",
+	"version": "0.0.1",
+	"description": "rss/atom feed reader",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tejaskb04/tkbfr.git"
+	},
+	"author": "tejaskb",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/tejaskb04/tkbfr/issues"
+	},
+	"homepage": "https://github.com/tejaskb04/tkbfr",
+	"dependencies": {
+		"body-parser": "^1.17.2",
+		"cookie-parser": "^1.4.3",
+		"express": "^4.15.3",
+		"feed-read": "^0.0.1",
+		"morgan": "^1.8.2",
+		"nunjucks": "^3.0.1",
+		"path": "^0.12.7",
+		"serve-favicon": "^2.4.3"
+	}
 }
