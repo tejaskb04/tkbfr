@@ -1,4 +1,4 @@
-// account controller methods
+// account controller actions
 
 exports.login = function (req, res, next) {
 	res.render("./account/login", { title: "Login Page" });

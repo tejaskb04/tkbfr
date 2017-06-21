@@ -1,11 +1,8 @@
-// define routes for feed controller methods
-var express = require("express");
-var http = require("http");
-var feed = require("feed-read");
-var app;
+// feed controller actions
 
 exports.read = function (req, res, next) {
 	// read the variable that comes as part of url, "./feed/read/<url>"
+	console.log("feed read reached");
 	var params = req.params;
 	var feedurl = params.feedurl;
 	console.log("feed url: %s", feedurl);

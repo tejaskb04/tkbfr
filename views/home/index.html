@@ -14,9 +14,11 @@
                         var furl = $(this).attr("data-href");
                         //furl.toLowerCase();
                         alert("clicked");
-                        alert(furl);
+						alert(furl);
+						var full_url = "~/feed/read/" + furl;
+						alert(full_url);
                         $.ajax({
-                            url: "/feed/read/" + furl,
+                            url: full_url,
                             dataType: JSON,
                             success: function(data, textStatus, jqxhr) {
                                 alert("hi");
