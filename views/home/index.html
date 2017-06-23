@@ -13,6 +13,7 @@
 						var server = window.location.protocol.concat("//").concat(window.location.hostname).concat(":").concat(window.location.port);
 						var full_url = server + "/feed/read/" + encodeURIComponent(furl);
 						var message = "get url: " + full_url;
+						//alert(full_url);
 						console.log(message);
 						$.ajax({
 							url: full_url,
@@ -49,7 +50,6 @@
 			</script>
 		</div>
 		<div class="col-xs-9" id="feed-col">
-			this is right col feed display
 		</div>
 	</div>
 </div>
