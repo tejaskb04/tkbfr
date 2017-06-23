@@ -6,7 +6,7 @@ exports.read = function (req, res, next) {
 	var params = req.params;
 	var feedurl = params.furl;
 	console.log("feed url: %s", feedurl);
-
+	// load feed read module
 	var feed = require("feed-read");
 
 	// pass that <url> to feed-read module
@@ -19,7 +19,8 @@ exports.read = function (req, res, next) {
 			// get the result of feed-read module as JSON
 			// send that JSON back to the caller (which is the jquery get function)
 			// do not use res.render, because there is no HTML to be rendered, only JSON to send back
-			res.json(articles);
+			console.log(articles);
+			res.send(articles);
 		}
 	});
 };

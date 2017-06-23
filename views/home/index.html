@@ -4,34 +4,45 @@
 <div class="fluid-container">
 	<div class="row">
 		<div class="col-xs-3" id="left-nav-col">
-			this is left col list of feeds
 			<a class="flink" href="#" data-href="http://feeds.bbci.co.uk/news/rss.xml">http://feeds.bbci.co.uk/news/rss.xml</a>
-			<a class="flink" href="#" data-href="http://news.sky.com/feeds/rss/home.xml">http://news.sky.com/feeds/rss/home.xml</a>
 			<a class="flink" href="#" data-href="http://www.techmeme.com/feed.xml">http://www.techmeme.com/feed.xml</a>
 			<script>
 				$(document).ready(function () {
 					$(".flink").bind("click", function () {
 						var furl = $(this).attr("data-href");
-						var protocol = location.protocol;
-						var slashes = protocol.concat("//");
-						var host = slashes.concat(window.location.hostname);
-						var server = host.concat(":".concat(location.port));
-						//furl.toLowerCase();
-						alert("clicked");
-						alert(furl);
+						var server = window.location.protocol.concat("//").concat(window.location.hostname).concat(":").concat(window.location.port);
 						var full_url = server + "/feed/read/" + encodeURIComponent(furl);
-						alert(full_url);
+						var message = "get url: " + full_url;
+						console.log(message);
 						$.ajax({
 							url: full_url,
 							dataType: "json"
 						}).done(function (data, textStatus, jqxhr) {
-							alert("done: " + textStatus);
+							var message = "/feed/read success.";
+							console.log(message);
+							console.log(data);
+							// enumerate the array and load the articles in the right panel
+							var feed_html = "";
+							for (var i = 0; i < data.length; i++) {
+								var item = data[i];
+								var title = item.title;
+								var link = item.link;
+								var author = item.author;
+								var content = item.content;
+								var published = item.published;
+								var item_html = "<div><h2>" + title + "</h2><p>" + content + "</p>";
+								feed_html = feed_html + item_html;
+							}
+							$("#feed-col").html(feed_html);
 
 						}).fail(function (data, textStatus, jqxhr) {
-							alert("fail: " + textStatus);
+							var errorMessage = "unable to get the feed. error: " + textStatus;
+							console.log(errorMessage);
+							alert(errorMessage);
 
 						}).always(function (data, textStatus, jqxhr) {
-							alert("always: " + textStatus);
+							var message = "/feed/read always. status: " + textStatus;
+							console.log(message);
 						});
 					});
 				});
