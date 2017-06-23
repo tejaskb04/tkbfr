@@ -42,9 +42,9 @@ var homeRoutes = require("./routes/homeRoutes.js");
 var accountRoutes = require("./routes/accountRoutes.js");
 var feedRoutes = require("./routes/feedRoutes.js");
 // then, connect the imported routes to the URLs
-app.use("/", homeRoutes);
 app.use("/account", accountRoutes);
 app.use("/feed", feedRoutes);
+app.use("/", homeRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

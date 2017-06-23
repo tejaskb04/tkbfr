@@ -2,37 +2,45 @@
 {% block body %}
 
 <div class="fluid-container">
-    <div class="row">
-        <div class="col-xs-3" id="left-nav-col">
-            this is left col list of feeds
-            <a class="flink" href="#" data-href="http://feeds.bbci.co.uk/news/rss.xml">http://feeds.bbci.co.uk/news/rss.xml</a>
-            <a class="flink" href="#" data-href="http://news.sky.com/feeds/rss/home.xml">http://news.sky.com/feeds/rss/home.xml</a>
-            <a class="flink" href="#" data-href="http://www.techmeme.com/feed.xml">http://www.techmeme.com/feed.xml</a>
-            <script>
-                $(document).ready(function() {
-                    $(".flink").bind("click", function() {
-                        var furl = $(this).attr("data-href");
-                        //furl.toLowerCase();
-                        alert("clicked");
+	<div class="row">
+		<div class="col-xs-3" id="left-nav-col">
+			this is left col list of feeds
+			<a class="flink" href="#" data-href="http://feeds.bbci.co.uk/news/rss.xml">http://feeds.bbci.co.uk/news/rss.xml</a>
+			<a class="flink" href="#" data-href="http://news.sky.com/feeds/rss/home.xml">http://news.sky.com/feeds/rss/home.xml</a>
+			<a class="flink" href="#" data-href="http://www.techmeme.com/feed.xml">http://www.techmeme.com/feed.xml</a>
+			<script>
+				$(document).ready(function () {
+					$(".flink").bind("click", function () {
+						var furl = $(this).attr("data-href");
+						var protocol = location.protocol;
+						var slashes = protocol.concat("//");
+						var host = slashes.concat(window.location.hostname);
+						var server = host.concat(":".concat(location.port));
+						//furl.toLowerCase();
+						alert("clicked");
 						alert(furl);
-						var full_url = "~/feed/read/" + furl;
+						var full_url = server + "/feed/read/" + encodeURIComponent(furl);
 						alert(full_url);
-                        $.ajax({
-                            url: full_url,
-                            dataType: JSON,
-                            success: function(data, textStatus, jqxhr) {
-                                alert("hi");
-                                alert(data);
-                            }
-                        });
-                    });
-                });
-            </script>
-        </div>
-        <div class="col-xs-9" id="feed-col">
-            this is right col feed display
-        </div>
-    </div>
+						$.ajax({
+							url: full_url,
+							dataType: "json"
+						}).done(function (data, textStatus, jqxhr) {
+							alert("done: " + textStatus);
+
+						}).fail(function (data, textStatus, jqxhr) {
+							alert("fail: " + textStatus);
+
+						}).always(function (data, textStatus, jqxhr) {
+							alert("always: " + textStatus);
+						});
+					});
+				});
+			</script>
+		</div>
+		<div class="col-xs-9" id="feed-col">
+			this is right col feed display
+		</div>
+	</div>
 </div>
 
 {% endblock %}
