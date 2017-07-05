@@ -13,6 +13,7 @@ exports.loginData = function(req, res, next) {
 		});
 		req.on("end", function() {
 			var POST = qs.parse(body);
+			alert(POST);
 			// do stuff
 		});
 	}
