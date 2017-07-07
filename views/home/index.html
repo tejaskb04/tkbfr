@@ -31,7 +31,7 @@
 								var author = item.author;
 								var content = item.content;
 								var published = item.published;
-								var item_html = "<div><h2>" + title + "</h2><p>" + author + "<div><h2>" + content + "</p>";
+								var item_html = "<div><h2>" + title + "</h2><p>" + author +"</p><p>" + content + "</p></div>";
 								feed_html = feed_html + item_html;
 							}
 							$("#feed-col").html(feed_html);
