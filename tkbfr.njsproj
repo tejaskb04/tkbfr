@@ -29,6 +29,12 @@
     <Compile Include="routes\feedRoutes.js" />
     <Compile Include="routes\homeRoutes.js" />
     <Content Include="views\error.html" />
+    <Content Include="views\_footer.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="views\_header.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\_layout.html" />
     <Content Include="public\css\site.css" />
     <Content Include="public\js\feedjs-test.html" />
