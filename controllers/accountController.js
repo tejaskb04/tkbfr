@@ -1,5 +1,4 @@
 // account controller actions
-var qs = require("querystring");
 
 exports.login = function (req, res, next) {
 	res.render("./account/login", { title: "Login Page" });
@@ -12,8 +11,10 @@ exports.loginData = function(req, res, next) {
 			body += data;
 		});
 		req.on("end", function() {
-			var POST = qs.parse(body);
-			alert(POST);
+			//var post = qs.parse(body);
+			//console.log(post.email);
+			//console.log(post.password);
+			console.log(JSON.parse(body));
 			// do stuff
 		});
 	}
