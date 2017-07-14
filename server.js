@@ -29,7 +29,7 @@ app.set("view engine", "html");
 //app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 app.use(logger("dev")); // "dev" format of logger prints color coded strings to console
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/static", express.static(path.join(__dirname, "public")));

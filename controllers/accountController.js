@@ -5,19 +5,21 @@ exports.login = function (req, res, next) {
 };
 
 exports.loginData = function(req, res, next) {
-	if (req.method == "POST") {
-		var body = "";
-		req.on("data", function(data) {
-			body += data;
-		});
-		req.on("end", function() {
-			//var post = qs.parse(body);
-			//console.log(post.email);
-			//console.log(post.password);
-			console.log(JSON.parse(body));
-			// do stuff
-		});
-	}
+	//if (req.method == "POST") {
+	//	var body = "";
+	//	req.on("data", function(data) {
+	//		body += data;
+	//	});
+	//	req.on("end", function() {
+	//		//var post = qs.parse(body);
+	//		//console.log(post.email);
+	//		//console.log(post.password);
+	//		console.log(JSON.parse(body));
+	//		// do stuff
+	//	});
+	//}
+	console.log(req.body.email);
+	console.log(req.body.password);
 }
 
 exports.register = function (req, res, next) {
